@@ -2,13 +2,13 @@
 layout: gig
 title: beQbe
 categories: gig
+gig_url: https://www.beqbe.com
 lead: Social network and liking-based communication platform
 image: https://si0.twimg.com/profile_images/3603963289/abb4976b05f8eeb22b6c5c6bc22e7aab_normal.png
 
-link_to: |
-  - [https://www.beqbe.com](https://www.beqbe.com)
-  - [@beQbe](https://twitter.com/beQbe)
-  - [BEQBE](https://www.facebook.com/beqbecom)
+links:
+- https://twitter.com/beQbe
+- https://www.facebook.com/beqbecom
 
 about: |
   **beQbe** is a new social platform, based on a very simple principle in
@@ -27,9 +27,13 @@ about: |
   ![](http://www.emprendedorxxi.es/templates/2013/images/logo_premio_es.png)
 
 tech:
-  backend: "Rails 3 serving JSON API"
-  infrastructure: "AWS (ELB + EC2 + ElastiCache + RDS)"
-  frontend: "[Angular.JS](http://angularjs.org) client"
+- Angular.JS
+- Rails 3
+- Amazon web services
+- memcached
+- RDS
+- MySQL
+- SSL
 
 ---
 

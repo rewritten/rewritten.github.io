@@ -1,0 +1,64 @@
+---
+layout: default
+title: rewritten
+---
+<h1>rewritten's <tt>whoami</tt></h1>
+
+<div class="container">
+  <div class="row">
+    <section class="span3" title="Profiles">
+      <header>
+        <h3>Profiles</h3>
+      </header>
+      here you can find more about me. feel free to get in touch my any means.
+      <ul class="icons-ul">
+        <li><a href="http://www.linkedin.com/in/saveriotrioni">LinkedIn</a></li>
+        <li><a href="https://github.com/rewritten">GitHub</a></li>
+        <li><a href="http://stackoverflow.com/users/384417/rewritten">StackOverflow</a></li>
+        <li><a href="https://www.facebook.com/saveriotrioni">Facebook</a></li>
+        <li><a href="http://www.flickr.com/people/saverio/">Flickr</a></li>
+        <li><a href="https://plus.google.com/116362878025063680326">Google+</a></li>
+        <li><a href="http://pinterest.com/rewritten2013/">Pinterest</a></li>
+      </ul>
+
+    </section>
+    <section class="span5" title="Skills">
+      <header>
+        <h3>Skills</h3>
+      </header>
+      <p>
+        Skills??? in the course of time I've come in touch with several technologies
+        and even more disparate business requirements. Of course there are some
+        toy I enjoy more playing with, but from every single piece of another
+        people's work I try to learn something.
+      </p>
+      <p>
+        You can see in the 'gigs' section the major techs used in projects I've
+        significantly contributed to, and rest assured that I have touched all of
+        them.
+      </p>
+      <p>
+        Of course I'm probably not half a programmer or expert in any of them.
+        What I do is try to think transversal, so I'm never too constrained on
+        the particular choice of technology.
+      </p>
+      <p>
+        My most important skill? <mark>Being able to read</mark>.
+      </p>
+    </section>
+    <div class="span4 gigs">
+      <h3>gigs</h3>
+      here you can find some info on gigs I have participated in.
+      {% for page_in_order in site.pages %}
+        {% if page_in_order.categories contains 'gig' %}
+          <section class="gig-link">
+            <h4>
+              <a href="{{ page_in_order.url }}">{{ page_in_order.title }}</a>
+              <small>{{ page_in_order.lead }}</small>
+            </h4>
+          </section>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

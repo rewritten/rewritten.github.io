@@ -7,34 +7,10 @@
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
     <style>
-      @media (min-width: 768px) { body {padding-top: 50px;} }
-      @media (max-width: 767px) { body {padding-top: 0;} }
+      header.page-header p.lead:last-child { margin-bottom: 0; }
     </style>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="/">rewritten</a>
-          <ul class="nav">
-            <li><a href="/"><i class="icon-home"></i></a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                gigs
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                {% for page_in_order in site.pages %}
-                  {% if page_in_order.categories contains 'gig' %}
-                    <li><a href="{{ page_in_order.url }}">{{ page_in_order.title }}</a></li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <div class="container">
       {{ content }}
     </div>
@@ -52,20 +28,21 @@
       var iconify = function(url) {
         var found = _.find(['facebook', 'twitter', 'linkedin', 'github', 'flickr', 'pinterest'], function(w) {
           return ~url.hostname.indexOf(w);
-        }) || _.find({"plus.google": "google-plus", "stackoverflow": "stackexchange"}, function(value, key) {
+        }) || _.find({'plus.google': 'google-plus', 'stackoverflow': 'stackexchange'}, function(value, key) {
           return ~url.hostname.indexOf(key);
-        }) || "external-link";
-        return "icon-" + found;
+        }) || 'external-link';
+        return 'icon-' + found;
       }
       $(function() {
-        $(".links ul").addClass("icons-ul");
-        $(".links ul li").prepend("<i class=\"icon-li\"></i>");
-        $(".links ul li a:first-of-type").each(function() {
-          $(this).siblings("i").addClass(iconify(this));
+        $('.links ul').addClass('icons-ul');
+        $('ul.icons-ul li').prepend('<i class="icon-li"></i>');
+        $('ul.icons-ul li a:first-of-type').each(function() {
+          $(this).siblings('i').addClass(iconify(this));
         });
-        $("a").not(".icons-ul a").filter(function() {
+        $('a').not('.icons-ul a').filter(function() {
           return this.hostname && this.hostname !== location.hostname;
-        }).attr({target: "_blank"}).each(function() { $(this).addClass(iconify(this)); });
+        }).attr({target: '_blank'}).each(function() { $(this).prepend('<i class="' + iconify(this) + '"></i> '); });
+        $('img').addClass('img-polaroid');
       });
     </script>
   </body>

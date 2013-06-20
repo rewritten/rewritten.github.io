@@ -1,70 +1,73 @@
 ---
 layout: default
 ---
-{% assign found = false %}
-{% assign prev_ = nil %}
-{% assign next_ = nil %}
-{% for page_in_order in site.pages %}
-  {% if page_in_order.categories contains 'gig' %}
-    {% if page_in_order.title == page.title %}
-      {% assign found = true %}
-    {% else %}
-      {% if found == true %}
-        {% if next_ == nil %}
-          {% assign next_ = page_in_order %}
-        {% endif %}
-      {% else %}
-        {% assign prev_ = page_in_order %}
-      {% endif %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
-
-<ul class="pager">
-  {% if prev_ %}
-  <li class="previous">
-    <a href="{{ prev_.url }}">&larr; {{ prev_.title }}</a>
-  </li>
-  {% endif %}
-  {% if next_ %}
-  <li class="next">
-    <a href="{{ next_.url }}">{{ next_.title }} &rarr;</a>
-  </li>
-  {% endif %}
-</ul>
-
-<p class="clearfix"></p>
-
-<header>
-  <h1>{{ page.title }}</h1>
-</header>
-<p class="lead">
-  {{ page.lead }}
-</p>
-
-<div class="row">
-  <div class="span6">
-    <h4>about</h4>
-    {{ page.about | markdownify }}
-  </div>
-  <div class="span6">
-    <img class="pull-right img-polaroid" src="{{ page.image }}" />
-    <h4>link</h4>
-    <div class="links">
-      {{ page.link_to | markdownify }}
-    </div>
-    <h4>technologies</h4>
-    <dl>
-    {% for t in page.tech %}
-      <dt>{{ t[0] }}:</dt>
-        <dd>{{ t[1] | markdownify }}</dd>
-    {% endfor %}
-    </dl>
-
-  </div>
-</div>
 
 <div class="container">
-  {{ content }}
+  <div class="row">
+
+    <aside class="span2" style="padding-top: 25px;">
+      <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+          <li><a href="/"><i class="icon-user"></i> home</a></li>
+          <li class="nav-header">other gigs</li>
+          {% for page_in_order in site.pages %}
+            {% if page_in_order.categories contains 'gig' %}
+                <li{% if page_in_order.url == page.url %} class="active"{% endif %}>
+                  <a href="{{ page_in_order.url }}">{{page_in_order.title}}</a>
+                </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+
+    <article class="span10">
+
+      <header class="page-header">
+        <img class="pull-right img-polaroid" src="{{ page.image }}" />
+        <h1>{{ page.title }} <small>{{ page.lead }}</small></h1>
+        {% for t in page.tech %}
+        <span class="label">{{ t }}</span>
+        {% endfor %}
+        <p class="lead">
+          See it in action: <a href="{{ page.gig_url }}">{{ page.gig_url }}</a>
+        </p>
+      </header>
+
+      <div class="row">
+        <div class="span5">
+          <h4>about</h4>
+          {{ page.about | markdownify }}
+        </div>
+        <div class="span5">
+          {% if page.links %}
+            <section>
+              <h4>links</h4>
+              <ul class="icons-ul">
+                {% for l in page.links %}
+                <li><a href="{{l}}">{{l}}</a></li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+          <h4>technologies</h4>
+          <dl>
+          {% for t in page.more %}
+            <dt>{{ t[0] }}:</dt>
+              <dd>{{ t[1] | markdownify }}</dd>
+          {% endfor %}
+          </dl>
+
+        </div>
+      </div>
+
+
+    </article>
+    <div class="container">
+      {{ content }}
+    </div>
+
+  </div>
 </div>
+
 

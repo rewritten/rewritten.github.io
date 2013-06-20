@@ -2,7 +2,9 @@
 layout: gig
 title: Flumotion
 categories: gig
+gig_url: http://www.flumotion.com/en/
 lead: Online TV platform
+image: http://www.flumotion.com/wp-content/uploads/header_logo3.png
 
 about: |
   **Flumotion** is an open source streaming platform, based on `gstreamer`,
@@ -24,8 +26,12 @@ about: |
   - share of a specific section of a video
 
 tech:
-  backend: "Django"
-  CMS frontend: "[Apache Flex](http://flex.apache.org/)"
-  video player: "OSMF"
-  web widgets: "AngularJS"
+- Python
+- Apache Flex
+- Django
+- Twisted
+- OSMF
+- Cairngorm
+- GStreamer
+- Swiz framework
 ---

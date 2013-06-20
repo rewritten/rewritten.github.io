@@ -3,8 +3,8 @@ layout: gig
 title: SocialFolders
 categories: gig
 lead: social network multimedia sync
-link_to: >
-  - [https://socialfolders.me](https://socialfolders.me/)
+gig_url: https://socialfolders.me
+
 about: |
   Document synchronization tool for social networks and collaboration platforms.
 
@@ -33,9 +33,11 @@ about: |
   - Box.net
 
 tech:
-  backend: "Rails and Sinatra"
-  queue system: "beanstalkd"
-  frontend: "QT - multiplatform"
+- Ruby
+- Rails
+- Sinatra
+- beanstalkd
+- QT
 
 role: Lead architect
 what: |
