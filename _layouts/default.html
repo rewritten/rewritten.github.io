@@ -47,42 +47,25 @@
     </div>
     <script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
     <script>
+      var iconify = function(url) {
+        var found = _.find(['facebook', 'twitter', 'linkedin', 'github', 'flickr', 'pinterest'], function(w) {
+          return ~url.hostname.indexOf(w);
+        }) || _.find({"plus.google": "google-plus", "stackoverflow": "stackexchange"}, function(value, key) {
+          return ~url.hostname.indexOf(key);
+        }) || "external-link";
+        return "icon-" + found;
+      }
       $(function() {
         $(".links ul").addClass("icons-ul");
         $(".links ul li").prepend("<i class=\"icon-li\"></i>");
         $(".links ul li a:first-of-type").each(function() {
-          if (~this.hostname.indexOf('facebook')) {
-            $(this).siblings("i").addClass("icon-facebook");
-          } else if (~this.hostname.indexOf('twitter')) {
-            $(this).siblings("i").addClass("icon-twitter");
-          } else {
-            $(this).siblings("i").addClass("icon-external-link");
-          }
-        });
-        each(function() {
-
+          $(this).siblings("i").addClass(iconify(this));
         });
         $("a").not(".icons-ul a").filter(function() {
           return this.hostname && this.hostname !== location.hostname;
-        }).each(function() {
-          var v;
-          console.log(this, $(this));
-          $(this).attr({
-            target: "_blank"
-          }).addClass((function() {
-            switch (v = ($(this).attr("title") || "").toLowerCase()) {
-              case "twitter":
-              case "facebook":
-              case "google-plus":
-              case "github":
-              case "flickr":
-                return "icon-" + v;
-              default:
-                return "icon-external-link";
-            }
-          }).call(this));
-        });
+        }).attr({target: "_blank"}).each(function() { $(this).addClass(iconify(this)); });
       });
     </script>
   </body>

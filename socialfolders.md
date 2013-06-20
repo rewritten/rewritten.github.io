@@ -4,7 +4,7 @@ title: SocialFolders
 categories: gig
 lead: social network multimedia sync
 link_to: >
-  - [https://socialfolders.me](https://socialfolders.me)
+  - [https://socialfolders.me](https://socialfolders.me/)
 about: |
   Document synchronization tool for social networks and collaboration platforms.
 
