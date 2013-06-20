@@ -1,0 +1,70 @@
+---
+layout: default
+---
+{% assign found = false %}
+{% assign prev_ = nil %}
+{% assign next_ = nil %}
+{% for page_in_order in site.pages %}
+  {% if page_in_order.categories contains 'gig' %}
+    {% if page_in_order.title == page.title %}
+      {% assign found = true %}
+    {% else %}
+      {% if found == true %}
+        {% if next_ == nil %}
+          {% assign next_ = page_in_order %}
+        {% endif %}
+      {% else %}
+        {% assign prev_ = page_in_order %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<ul class="pager">
+  {% if prev_ %}
+  <li class="previous">
+    <a href="{{ prev_.url }}">&larr; {{ prev_.title }}</a>
+  </li>
+  {% endif %}
+  {% if next_ %}
+  <li class="next">
+    <a href="{{ next_.url }}">{{ next_.title }} &rarr;</a>
+  </li>
+  {% endif %}
+</ul>
+
+<p class="clearfix"></p>
+
+<header>
+  <h1>{{ page.title }}</h1>
+</header>
+<p class="lead">
+  {{ page.lead }}
+</p>
+
+<div class="row">
+  <div class="span6">
+    <h4>about</h4>
+    {{ page.about | markdownify }}
+  </div>
+  <div class="span6">
+    <img class="pull-right img-polaroid" src="{{ page.image }}" />
+    <h4>link</h4>
+    <div class="links">
+      {{ page.link_to | markdownify }}
+    </div>
+    <h4>technologies</h4>
+    <dl>
+    {% for t in page.tech %}
+      <dt>{{ t[0] }}:</dt>
+        <dd>{{ t[1] | markdownify }}</dd>
+    {% endfor %}
+    </dl>
+
+  </div>
+</div>
+
+<div class="container">
+  {{ content }}
+</div>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ site.title }}{% if page.title %} - {{page.title}} {% endif %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+      @media (min-width: 768px) { body {padding-top: 50px;} }
+      @media (max-width: 767px) { body {padding-top: 0;} }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">rewritten</a>
+          <ul class="nav">
+            <li><a href="/"><i class="icon-home"></i></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                gigs
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                {% for page_in_order in site.pages %}
+                  {% if page_in_order.categories contains 'gig' %}
+                    <li><a href="{{ page_in_order.url }}">{{ page_in_order.title }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      {{ content }}
+    </div>
+    <div class="footer">
+      <small>Tagged with:
+        {% for tag in page.tags %}
+          <span class="label">{{ tag }}</span>
+        {% endfor %}
+      </small>
+    </div>
+    <script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script>
+      $(function() {
+        $(".links ul").addClass("icons-ul");
+        $(".links ul li").prepend("<i class=\"icon-li\"></i>");
+        $(".links ul li a:first-of-type").each(function() {
+          if (~this.hostname.indexOf('facebook')) {
+            $(this).siblings("i").addClass("icon-facebook");
+          } else if (~this.hostname.indexOf('twitter')) {
+            $(this).siblings("i").addClass("icon-twitter");
+          } else {
+            $(this).siblings("i").addClass("icon-external-link");
+          }
+        });
+        each(function() {
+
+        });
+        $("a").not(".icons-ul a").filter(function() {
+          return this.hostname && this.hostname !== location.hostname;
+        }).each(function() {
+          var v;
+          console.log(this, $(this));
+          $(this).attr({
+            target: "_blank"
+          }).addClass((function() {
+            switch (v = ($(this).attr("title") || "").toLowerCase()) {
+              case "twitter":
+              case "facebook":
+              case "google-plus":
+              case "github":
+              case "flickr":
+                return "icon-" + v;
+              default:
+                return "icon-external-link";
+            }
+          }).call(this));
+        });
+      });
+    </script>
+  </body>
+</html>
