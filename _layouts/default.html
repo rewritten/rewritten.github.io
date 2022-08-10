@@ -11,16 +11,18 @@
           crossorigin="anonymous" 
           referrerpolicy="no-referrer" />
   </head>
-  <body>
-    <div class="container content">
+  <body style="min-height: 100vh; display: flex; flex-direction: column;">
+    <div class="is-flex-grow-1">
       {{ content }}
     </div>
-    <div class="footer">
-      <small>Tagged with:
-        {% for tag in page.tags %}
-          <span class="label">{{ tag }}</span>
-        {% endfor %}
-      </small>
+    <div class="footer is-flex-grow-0">
+      <div class="container">
+        <small>Tagged with:
+          {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </small>
+      </div>
     </div>
   </body>
 </html>

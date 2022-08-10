@@ -7,11 +7,11 @@ title: rewritten
 <div class="container">
   <div class="columns">
     <section class="column is-one-quarter" title="Profiles">
-      <header>
+      <header class="title">
         <h3>Profiles</h3>
       </header>
       here you can find more about me. feel free to get in touch my any means.
-      <ul class="icons-ul">
+      <ul>
         <li><a href="http://www.linkedin.com/in/saveriotrioni">LinkedIn</a></li>
         <li><a href="https://github.com/rewritten">GitHub</a></li>
         <li><a href="http://stackoverflow.com/users/384417/rewritten">StackOverflow</a></li>
@@ -23,7 +23,7 @@ title: rewritten
 
     </section>
     <section class="column" title="Skills">
-      <header>
+      <header class="title">
         <h3>Skills</h3>
       </header>
       <p>
@@ -47,7 +47,7 @@ title: rewritten
       </p>
     </section>
     <div class="column is-one-third">
-      <h3>gigs</h3>
+      <h3 class="title">gigs</h3>
       here you can find some info on gigs I have participated in.
       {% for page_in_order in site.pages %}
         {% if page_in_order.categories contains 'gig' %}

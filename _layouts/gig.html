@@ -28,18 +28,18 @@ layout: default
     <article class="column is-three-quarters">
 
       <header class="page-header">
-        <img class="pull-right img-polaroid" src="{{ page.image }}" />
-        <h1>{{ page.title }} <small>{{ page.lead }}</small></h1>
+        <img class="is-pulled-right img-polaroid" src="{{ page.image }}" />
+        <h1 class="title">{{ page.title }} <small>{{ page.lead }}</small></h1>
         {% for t in page.tech %}
-        <span class="label">{{ t }}</span>
+        <span class="tag">{{ t }}</span>
         {% endfor %}
-        <p class="lead">
+        <p class="subtitle">
           See it in action: <a href="{{ page.gig_url }}">{{ page.gig_url }}</a>
         </p>
       </header>
 
       <div class="columns">
-        <div class="column">
+        <div class="column content">
           <h4>about</h4>
           {{ content }}
         </div>
