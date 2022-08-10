@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <title>{{ site.title }}{% if page.title %} - {{page.title}} {% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-      header.page-header p.lead:last-child { margin-bottom: 0; }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" 
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer" />
   </head>
   <body>
-    <div class="container">
+    <div class="container content">
       {{ content }}
     </div>
     <div class="footer">
@@ -21,29 +22,5 @@
         {% endfor %}
       </small>
     </div>
-    <script src="//code.jquery.com/jquery-2.0.2.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.3.1/lodash.min.js"></script>
-    <script>
-      var iconify = function(url) {
-        var found = _.find(['facebook', 'twitter', 'linkedin', 'github', 'flickr', 'pinterest'], function(w) {
-          return ~url.hostname.indexOf(w);
-        }) || _.find({'plus.google': 'google-plus', 'stackoverflow': 'stackexchange'}, function(value, key) {
-          return ~url.hostname.indexOf(key);
-        }) || 'external-link';
-        return 'icon-' + found;
-      }
-      $(function() {
-        $('.links ul').addClass('icons-ul');
-        $('ul.icons-ul li').prepend('<i class="icon-li"></i>');
-        $('ul.icons-ul li a:first-of-type').each(function() {
-          $(this).siblings('i').addClass(iconify(this));
-        });
-        $('a').not('.icons-ul a').filter(function() {
-          return this.hostname && this.hostname !== location.hostname;
-        }).attr({target: '_blank'}).each(function() { $(this).prepend('<i class="' + iconify(this) + '"></i> '); });
-        $('img').addClass('img-polaroid');
-      });
-    </script>
   </body>
 </html>

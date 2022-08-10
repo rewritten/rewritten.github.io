@@ -5,8 +5,8 @@ title: rewritten
 <h1>rewritten's <tt>whoami</tt></h1>
 
 <div class="container">
-  <div class="row">
-    <section class="span3" title="Profiles">
+  <div class="columns">
+    <section class="column is-one-quarter" title="Profiles">
       <header>
         <h3>Profiles</h3>
       </header>
@@ -22,7 +22,7 @@ title: rewritten
       </ul>
 
     </section>
-    <section class="span5" title="Skills">
+    <section class="column" title="Skills">
       <header>
         <h3>Skills</h3>
       </header>
@@ -46,12 +46,12 @@ title: rewritten
         My most important skill? <mark>Being able to read</mark>.
       </p>
     </section>
-    <div class="span4 gigs">
+    <div class="column is-one-third">
       <h3>gigs</h3>
       here you can find some info on gigs I have participated in.
       {% for page_in_order in site.pages %}
         {% if page_in_order.categories contains 'gig' %}
-          <section class="gig-link">
+          <section>
             <h4>
               <a href="{{ page_in_order.url }}">{{ page_in_order.title }}</a>
               <small>{{ page_in_order.lead }}</small>
